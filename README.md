@@ -18,7 +18,7 @@ H:;
 cd H:\Downloads;
 $file = Read-Host -Prompt "Filename";
 $file = "/" + $file;
-$path = "C:\Users\16crossol\AppData\Roaming\Microsoft\Windows\Themes";
+$path = "C:\Users\[PROFILENAME]\AppData\Roaming\Microsoft\Windows\Themes";
 cp .\$file $path ; rm $path\TranscodedWallpaper -ErrorAction SilentlyContinue;
 rni ($path + $file) $path\TranscodedWallpaper;
 rundll32.exe USER32.DLL,UpdatePerUserSystemParameters 1, True;
