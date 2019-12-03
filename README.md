@@ -83,3 +83,38 @@ public class Clicker{
 while (1 -eq 1) { start-sleep -m 5; [Clicker]::Click() }
 ```
 </details>
+
+<details>
+<summary> <b> View system proxy settings </b> </summary>
+    
+```powershell
+
+Get-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings'
+```
+or
+```powershell
+
+netsh winhttp show proxy
+```
+However this sometimes returns direct access no proxy (when there is) depending on how it is called.
+</details>
+
+<details>
+<summary> <b> Constrained Language Mode -> Full Language Mode bypass </b> </summary>
+
+Powershell 2.0 will need to be installed for this.
+Check for current language mode:
+
+```powershell
+$ExecutionContext.SessionState.LanguageMode
+```
+[The full list of what CLM blocks can be found here](https://devblogs.microsoft.com/powershell/powershell-constrained-language-mode/)
+
+If the system still has poweshell 2.0 (which the majority of organisations dont disable) you can run:
+
+```powershell
+
+powershell.exe -Version 2
+```
+to get a FLM session.
+</details>
