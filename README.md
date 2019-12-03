@@ -86,7 +86,8 @@ while (1 -eq 1) { start-sleep -m 5; [Clicker]::Click() }
 
 <details>
 <summary> <b> View system proxy settings </b> </summary>
-<br>    
+<br>
+    
 ```powershell
 
 Get-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings'
@@ -102,6 +103,7 @@ However this sometimes returns direct access no proxy (when there is) depending 
 <details>
 <summary> <b> Constrained Language Mode -> Full Language Mode bypass </b> </summary>
 <br>
+    
 Powershell 2.0 will need to be installed for this.
 Check for current language mode:
 
