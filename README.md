@@ -112,7 +112,7 @@ $ExecutionContext.SessionState.LanguageMode
 ```
 [The full list of what CLM blocks can be found here](https://devblogs.microsoft.com/powershell/powershell-constrained-language-mode/)
 
-If the system still has poweshell 2.0 (which the majority of organisations dont disable) you can run:
+If the system still has poweshell 2.0 (which the majority of people dont disable) you can run:
 
 ```powershell
 
