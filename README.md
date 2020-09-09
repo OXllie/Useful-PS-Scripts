@@ -2,6 +2,45 @@
 Assortment of commands
 
 <details>
+    <summary> <b> Get all registered windows URI handlers </b> </summary>
+	I couldn't find anything anywhere to get a list of all registered protocol/uri handlers so I put this together.<br/>
+    Outputs the uri scheme name, registry description and the command or ddeexec + verb invoked
+	
+```powershell
+Param(
+    [Switch]
+    $WrapOutput,
+    [Switch]
+    $List
+)
+
+Push-Location
+
+cd HKLM:\SOFTWARE\Classes
+
+ls |
+Get-ItemProperty |
+where -Property "(default)" -Like "URL:*" |
+    select -Property "PSChildName", "(default)", @{
+        l="Shell Command";
+        e ={
+            ls $_.PSChildName -Recurse -Include "command","ddeexec" |
+            gp |
+            %{ "$($_.PSChildName) $(Split-Path $_.PSParentPath -Leaf) $(select -InputObject $_ -ExpandProperty '(default)')" }
+        }
+    } -OutVariable res 1>$null
+
+if ($List.IsPresent) {
+    fl -InputObject $res
+} else {
+    ft -InputObject $res -Wrap:$WrapOutput
+}
+
+Pop-Location
+```
+</details>
+
+<details>
 <summary> <b> Hash contents of folder </b> </summary>
     
 ```powershell
